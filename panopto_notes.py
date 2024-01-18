@@ -139,7 +139,7 @@ def format_transcript(transcript):
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("You are missing an argument, trying to run this program. \nUsage: python3 gpt_notes.py [path_of_txt_file_to_send_to_ChatGPT]")
+        print("You are missing an argument, trying to run this program. \nUsage: python3 panopto_notes.py [URL_of_a_Panopto_lecture_video (if you have access to that from blackboard)]")
         exit()
     start = datetime.now()
     url = sys.argv[1]
