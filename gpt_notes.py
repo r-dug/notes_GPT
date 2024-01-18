@@ -1,15 +1,30 @@
+# standard python packages
 import os
-from openai import OpenAI
-import tiktoken
 import sys
 from datetime import datetime
 
-# Set up your OpenAI API key
+# check for required non standard packages, if not found, install then import them.
+required_packages = ["openai", "tiktoken"]
+for package in required_packages:
+    try:
+        __import__(package)
+    except ImportError:
+        os.system(f"pip install {package}")
 
+        os.system(f"pip install {package}")
+
+from openai import OpenAI
+
+
+if not os.environ.get("OPENAI_API_KEY"):
+    print("you need to find out how to use the chatGPT API... \nCreate an account there, create an API key, and add that as an environment variable on your machine so you can run this code.")
+    exit()
+# Set up your OpenAI API key
 client = OpenAI(
     # This is the default and can be omitted
     api_key=os.environ.get("OPENAI_API_KEY"),
 )
+
 def send(
         text_data=None,
         chat_model="gpt-4-1106-preview",
@@ -92,10 +107,11 @@ def read_file_content(file_path):
 
 # Use the function
 if __name__ == "__main__":
+
     start = datetime.now()
     banner = '\n\n'+'*'*100+'\n\n'
     if len(sys.argv) < 2:
-        print("Usage: python3 gpt_notes.py [path_of_txt_file]")
+        print("Usage: python3 gpt_notes.py [path_of_txt_file_to_send_to_ChatGPT]")
         exit()
     # Specify the path to your file
     file_path = sys.argv[1]

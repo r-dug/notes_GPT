@@ -31,14 +31,30 @@ def SSO(driver):
     driver.get(href)
     time.sleep(3)
     # driver.find_element(By.TAG_NAME,'body').send_keys('rcdoug03@louisville.edu')
-    pyautogui.typewrite("rcdoug03@louisville.edu")
+    username = None
+    password = None
+    if username != None:
+        try:
+            pyautogui.typewrite(username)
+        except Exception as e:
+            print(e)
+    else:
+        print("you need to add credentials.\n HINT: find the 'username' and 'password' variables in the panopto_notes.py file....")
+        exit()
     driver.find_element(By.TAG_NAME,'body').send_keys(Keys.TAB)
     driver.find_element(By.TAG_NAME,'body').send_keys(Keys.TAB)
     driver.find_element(By.TAG_NAME,'body').send_keys(Keys.TAB)
     # driver.find_element(By.TAG_NAME,'body').send_keys(Keys.TAB)
     pyautogui.press('enter')
     time.sleep(2)
-    pyautogui.typewrite("sSTtBzt%&hS6ELwjJ2uT")
+    if password != None:
+        try:
+            pyautogui.typewrite(password)
+        except Exception as e:
+            print(e)
+    else:
+        print("you need to add credentials.\n HINT: find the 'username' and 'password' variables in the panopto_notes.py file....")
+    
     # driver.find_element(By.TAG_NAME,'body').send_keys(Keys.TAB)
     # driver.find_element(By.TAG_NAME,'body').send_keys(Keys.TAB)
     time.sleep(1)
@@ -122,6 +138,9 @@ def format_transcript(transcript):
 
 
 if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        print("You are missing an argument, trying to run this program. \nUsage: python3 gpt_notes.py [path_of_txt_file_to_send_to_ChatGPT]")
+        exit()
     start = datetime.now()
     url = sys.argv[1]
     ua = UserAgent()

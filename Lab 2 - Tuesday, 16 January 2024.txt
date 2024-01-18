@@ -1,0 +1,243 @@
+Lab 2 - Tuesday, 16 January 2024
+And hello, everyone, and welcome back.
+ And our previous lab, we have learned how to plan to function and how to deal with a scape character.
+ Today we'll, uh, learn how to work with variable and, uh, how to define and how to write a symbol program.
+ Uh, based on the what we will discuss in this lap, a first to define variable.
+ And in general you need to define it's type.
+ Then it's to name a and semicolon to, to, uh, to end this instruction.
+ And if you want to define variable with an initial value, then you need to define a you need to define its type.
+ And it's a name equal to its value.
+ Uh, basically we will talk about a three different, three different type of variables.
+ The first one is a is two.
+ The first one is strength is the character.
+ The first one is a character.
+ So if we want to define variable, to store a character.
+ Uh, so I will show you how to do it.
+ As you know, the machine consists of, uh, multiple component.
+ One of the component is memory.
+ Uh, the memory is used to store a information related to our program to do some to do a specific task on it.
+ So to store information on the memory, you are going to use a variable.
+ So to define variable in a C or C++.
+ For example, the character one, you need to define its type.
+ So to define that, I that I for character, a value is called card.
+ And so if you use card, it means that you are going to define a variable that will contain a character, a character that will contain character.
+ So for example, if we define card e equal.
+ Equal.
+ P.
+ Then it means that, uh, we are going to define variable.
+ The type of this character and the initial value of this variable is B.
+ So if we want to print these values, so we'll use the free print function as we seen in the in the previous lap.
+ And present the value as a as a using a pointer to put it or to point to this variable as this protocol can be.
+ This pointer is modulus or percentage sine C present sine C or model C that reserve a place at this location.
+ The value of this place were referred to as F.
+ This will refer to the value of the variable.
+ So this is expected.
+ If we run the program, the output of this program will print p.
+ As you can see in the program, our output of our program is p.
+ And it also I won't mention that to define a character, you need to put it in a single quotation.
+ This, how to define that, to define a strength as we see in the previous lap.
+ If we want to print a sentence, we put it in the double conditional.
+ For example, if we want to print hello only we put hello alert and double quotation, and if we run the program it will print Hello world.
+ So if we want to store this hello or add value, which is us to write in a variable, in a variable to do it, you can define the string as character.
+ E.
+ Equal to, for example, empty string.
+ So to define character, a strike, you can define it as car E, but to practice as you see as to practice a a and this will refer to a string this to practice, you will see this to practice in the future.
+ And what is mean until we all will see it and that in our future lock it away for the strength is to it can contain an empty or one or more.
+ Correct.
+ So this is an empty site.
+ And if we want to put hello light on it, you just put hello it on the, uh, country to print this.
+ Right.
+ How can we pointer to the value of a string variable to to point a point to the value of a string variable.
+ You need to use modulus s which which just mean that the compiler will know that this is a place or this place would be a value of a string.
+ And if we are the program, actually we got an error because in this problem you can see that we have two variables with the same name.
+ So this is an arrow.
+ You can define a two variable with the same name.
+ So we need to change the name of this variable with a differently.
+ So if we run this program you will see Hello World.
+ Uh uh uh, our next, uh, that's what I will talk about it.
+ How do we solve that? How to how can we store a character or a strange values? Now we have I will show you how to store or deal with numbers.
+ We have two different type of numbers.
+ The first one, that integer numbers.
+ So to define a variable that has an integer types or that it's a value is a integer, you need to use int keyword, then that variable names equal to five.
+ This means that we are going to reserve a piece at the moment.
+ This is called A2 and the initial value of this place will be five.
+ So now if we want to print the value of this variable, we are going to t, we are going to use a modulus d or a percentage justice a, D and don't say semicolon, then run the program.
+ As you can see that p the output of that program is P then.
+ Hello.
+ Alright then Fi.
+ And if you want to store flu numbers, you need to use a float type A, The keyword for the float number is float a float E3 equal to five then.
+ Right.
+ If I wanted to paint or for two pointer to pointer to a float variable, you are going to use a percentage size if.
+ So if we are on the program, as you can see, the output is p then hello all it does in five as integer values and five as a floating, uh, float values.
+ And I just want to mention that, um, if, if we rule the value as five, the compiler will see this value as an integer type.
+ And if we, if we, we write the value as 5.
+5 that the compiler will see it as a float type.
+ So if we define it or if we assign it with a 5.
+5, 5.
+5 A is A is our float number or float type and it is an integer type.
+ So what will the compiler do? It will convert this type two integer type by truncate the fraction bar.
+ So if you define E2 with a float number, it will automatically convert this number to integrate python gate.
+ If the fraction board saw the expected output in this case will be five.
+ Aye, aye, aye.
+ If we are if you want to deal with consumptive value variable, we can define a constant variable by putting a keyword constant.
+ Before that, the duration of the value assumes that we want that value F for T to be constant.
+ So you need to what cost before the declaration of e for as constant int e for equal to five.
+ Is this mean that this variable variable will p read only? Which is this mean that you can a g change the value of e four So if we are trying to change the value of E four, you will find that it is an error in this lie because if you read the compiler errors you will see that the error is is the error, is that the assignment you are trying to assign value to read only variable, which is incorrect.
+ This is for the consent variable.
+ Um, and the last thing I want to talk about, um, uh, regarding to the variable, uh, is it is something we call it enumerate.
+ Which is me that we can define a series of integer of constant integer numbers.
+ As we know, I assure you, we can find different type of variable.
+ And there is a space, there is a define it or penalty in 30 types in the, uh, in the C programing like character, strength, integer and fluid.
+ And if we want to, let's assume that if we want to define a new data type and this data type A can only take a specific values, we can do it by using or using enumerate.
+ So to define a new data type, you can use enum and assume that we want to define that the type called weekday.
+ This data type has three different value.
+ For example, Saturday, Sunday, Monday.
+ As you can see that this data type has three different a series, different five values Saturday, Sunday, Monday.
+ And the value of this variable is the value.
+ Actually, the value of this type will be integral, not destroying string.
+ And for Saturday it will.
+ It will be matched to an integer value.
+ And Sunday it will be mapped to another one and the Monday will be mapped to another.
+ And by default, the compiler will put the value of that first value in the enumeration numerator to be zero and Seneca's one will p one and so on, so that the value of the new value of that week date will be consecutive value of the previous one.
+ So to use a this set that what I will say is that we need first define that type of variable, then it's Sydney, then its value.
+ So we define five as a day and the value of a week, if I will be.
+ But to be you, to do yours enumerator you need to what in before we weekday that this that the trouble is that we have declared uh he and we we are going to print.
+ The value of if.
+ As you can see, that the value of a five is one because certainty is second to value is the second constant value, and the first class on value is zero, and the second one is one and Caesar two, one is two and so on.
+ And if we want to change the value of this constant, we can just we can just come here and put any value.
+ For example, if we want a sun to equal to five, that integer value of sun is five.
+ We can just.
+ What? Equal five.
+ So now if we run the.
+ Program.
+ As you can see, the value will be far.
+ If we change the value of E five to Monday, what is expected output of E five? As you can see, the sun is five and the second one, which is multiple, a consecutive number is the next one which is, is which will be six.
+ So the output of Monday it will be six.
+ However, this consecutive series is not applied backward.
+ In other words, if we put in five two equal to Saturday, the output of ae5 by two for two, we see that by two follows.
+ The compiler will consider Saturday as zero.
+ So the expected output here is not four, but it will be zero.
+ Now I will show you how to perform operations on variables.
+ I will talk that primary burglary operations that I will talk about is the addition which will be represent as a plus subtraction, minus multiplication, asterisk, division, forward slash and remainder or modulus as a percentage signed.
+ So to t to perform operations on a two operands, we can define subject exit four plus for.
+ Then plaintiff.
+ 86.
+ So a.
+ If we use plus size, it means addition to the operation.
+ Here is addition and the converter will add four to the second to four.
+ And the result total in this case will be eight.
+ And the source, the expected output here will be eight.
+ I forgot the semicolon.
+ As you can see, it's a.
+ Just put it in.
+ A new line.
+ State.
+ Now, if if we put the operation elsewhere, 4.
+25 plus four.
+ Uh, so the expected output is 8.
+5.
+ So if we run the program here, if we run the program, we should expect that the result will be 8.
+5.
+ But we if we run the program, we will see that the result is eight, not 8.
+5.
+ The reason for that, because as you can see, 4.
+25 is a fluke type and four here is a particular type and we are going to perform an operation on that and mix it that type.
+ So the compiler will see it as a that the type that type of this operation will be the largest one, which will be at the floor.
+ So the output of this operation will be a 8.
+5.
+ However, if we can see that that type of variable that we are going to put 8.
+25 to, it is an integer type.
+ So the compiler will automatically convert this a a type which is a float type to integer type by 30 fraction part.
+ So that is a will be eight.
+ So.
+ To shoot right to the right.
+ Uh uh uh, it's the right value is the right the right one.
+ You can define ethics as flawed.
+ That's what I.
+ As you can see, that the result of this operation will be a 8.
+5.
+ To make a subtraction, just replace plus, plus minus.
+ So the result will be about five and four additions.
+ Just put a straight.
+ Which will be a 18.
+ 18.
+ For the deficient if we.
+ Divide five by two as the result of this operation should be 2.
+5 because 5.
+55 over two is 2.
+5.
+ But if we are the program, you can see that it will be two at the.
+ Reason for the imposition of the operation is that A, if you see the two brands of the division operation, which is five and two two, you need to think first, what is the type of this these operations for? The five is a integer and the two is an integer.
+ So, so the result of this operation should be integer.
+ So 5.
+2 is a 2.
+5, but the compiler will convert this value to integer because the time of this operation should be an integer.
+ So it will be truncated to two.
+ It will be targeted to two.
+ So to avoid this problem, you need at least define one of these to run as a float number.
+ To do it, you just.
+ You can just what, 5.
+0.
+ Which is means that the five is a float type, while two is integer.
+ So the division operation, that type of division operation in this case will be a float type.
+ And accordingly the output here would be 2.
+5.
+ The last operation I will talk about today is one we'll call it, plus, plus and minus.
+ Minus.
+ A plus plus operations.
+ I mean that actually it do two different task.
+ The first one is to.
+ Increase the value of the variable by one.
+ The second task is to return the value of this variable.
+ For example.
+ If we want to increase the value of ethics, uh, to buy one and to return the value of ethics, we can do it like this.
+ Ethics plus.
+ Plus.
+ And after this.
+ Strict instruction wall.
+ Brant, Essex.
+ Now Essex, A-plus plus means that we are going to increase the value of S6 by one and to return the value of a A6.
+ And if we are on the program as this case, you will find that a the return of the the return of A6 plus plus printing, the return of A6 plus plus is 2.
+5.
+ And if we print A6 we will find the value of this variable is 33.
+5.
+ So what plus plus it did here is it increase the value of A6 by one, but it returns that all to value.
+ So here it returns the old one, not the new one if we want to return.
+ The new value you need to put plus plus before that variable need.
+ So.
+ So in this case, if we run the program.
+ You will find that the output of plus or the return, the value of plus plus is six is a new value, which is 3.
+5.
+ Now I'll show you how to define a variable and how to perform operations on how to perform operations on the variable or on the on on the value itself.
+ Now, I will show you how to add a received value from the user.
+ So now we are going to create value for all user.
+ To reach value from user.
+ You can use a mythical scan if scan is a beta function that allow you to receive value from the user to device can if you need first defines the type of this variable.
+ For example, we are going to have to read or receive an integer number from the user.
+ So.
+ Oh, well, as I say, I'll show you before to represent and take a number, uh, to represent an integral number.
+ You can use dollar sign or a sorry you can use modulus or represent sign D, which would represent an integer, a variable or an integer value.
+ So the value that we are going to read for them to use, we need to with the values that we are going to read from the user tool into a variable.
+ So we need first to define a variable, assumes assume it is F and is attached, and it's a type S, And so I want to tell the compiler that the value that you are going to get it from is from user.
+ You need to book a, you need to book it in the variable F, So if you can put F, but actually the compiler expected to give him the location or the moment the address of if not the value of F So to point to that address on the location of if you need to put before f a and and decide.
+ So if we would add if this mean that again this means that the location of F then we are going to print to F.
+ But if and just swirl print to the user what we are expected.
+ Please enter the first number as the first event.
+ So if we run the program.
+ I see You can see that the compiler is waiting for me to enter.
+ The first value assumes that I will, but for then I will press enter.
+ So the value for a compiler, except therefore that I have a target.
+ And to put it into the variable if.
+ Now, if we one assumes that we want to write a very simple calculator that can accept two values from the from user, then perform any operation, let's assume that just make an addition only the addition operations.
+ So all first accept or receive or read the first value, then will read the second value from that user.
+ Then, Brant.
+ The addition.
+ The addition, uh, of, uh, this, uh, variables.
+ Let's assume I put five sensory, so the result will be eight.
+ That all I want to show you today.
+ And now you are ready to do your second lap.
+ So you need to work on your second lap at the.
+ If you have any questions, just, uh.
+ No, just tell me, what's your question? Oh, just send me an email.
+ Thank you.
+ 
