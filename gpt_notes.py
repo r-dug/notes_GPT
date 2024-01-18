@@ -5,7 +5,6 @@ import sys
 from datetime import datetime
 
 # Set up your OpenAI API key
-# Load your API key from an environment variable or secret management service
 
 client = OpenAI(
     # This is the default and can be omitted
