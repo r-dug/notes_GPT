@@ -12,7 +12,7 @@ for package in required_packages:
         os.system(f"pip install {package}")
 
         os.system(f"pip install {package}")
-
+import tiktoken
 from openai import OpenAI
 
 
@@ -76,6 +76,7 @@ def send(
                         You may notice due dates in the transcript- make special note that some of the due dates may be incorrect. 
                         Check any due dates you notice in the transcrit against the list of correct due dates listed below:
                         Wednesday, 2/21 C Exam; Monday, 4/8 C++ Exam; Monday, 4/15 Student ppt; Wednesday, 4/17 Student ppt; Monday, 4/22 Student ppt
+                        If any assignments are listed outside of the scope of the due dates I have listed for you, make note of them as well, but after the assignment, write '**not_in_sylabus**'.
                         When you make note of the due date, do so in the following format: ASSIGNMENT: [ASIGNMENT] | DUE: [DUE DATE]
                         For example, the due date for the c exam would be listed as such: ASSIGNMENT: C Exam | DUE: Wednesday, 2/21
 
@@ -107,7 +108,7 @@ def read_file_content(file_path):
 
 # Use the function
 if __name__ == "__main__":
-
+    target_dir = input("What directory would you like to put the notes in?\nEnter full path: ")
     start = datetime.now()
     banner = '\n\n'+'*'*100+'\n\n'
     if len(sys.argv) < 2:
@@ -124,11 +125,18 @@ if __name__ == "__main__":
     responses = send(text_data=file_content, lesson=lesson)
     print(f"{banner}Successfully fetched notes from ChatGPT API{banner}")
     
-    # Print the responses
-    # for response in responses:
-    #     print(response)
-    with open(f"./notes/{lesson}_notes.html", "w") as f:
-        for response in responses:
-            f.write(response)
-    print(f"{banner}Notes written to {lesson}_notes.html{banner}")
+    # first, let's try saving these notes to the directory of the user's choice
+    # if that doesn't work or the user didn't select a dir, let's just save it to current dir.
+    try:
+        with open(f"{target_dir}{lesson}_notes.html", "w") as f:
+            for response in responses:
+                f.write(response)
+        print(f"{banner}Notes written to {target_dir}{lesson}_notes.html{banner}")
+    except Exception as e:
+        print(e)
+        with open(f"./{lesson}_notes.html", "w") as f:
+            for response in responses:
+                f.write(response)
+        print(f"{banner}However, notes written to ./{lesson}_notes.html{banner}")
+    
     print(f"Runtime: {datetime.now() - start}")
