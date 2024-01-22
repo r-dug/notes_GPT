@@ -31,8 +31,8 @@ def SSO(driver):
     driver.get(href)
     time.sleep(3)
     # driver.find_element(By.TAG_NAME,'body').send_keys('rcdoug03@louisville.edu')
-    username = None
-    password = None
+    username = os.getenv("BACKBOARD_UNAME")
+    password = os.getenv("BACKBOARD_PWD")
     if username != None:
         try:
             pyautogui.typewrite(username)
@@ -113,13 +113,21 @@ def find_transcript(driver, title):
 
     # empty string to fill with transcript
     transcript = f"{title}\n"
+    transcript_list = None
     print("finding transcript elements and compiling list")
-    try:
-        transcript_list = driver.find_element(By.XPATH, '//*[@id="transcriptTabPane"]/div[3]/ul')
-        text_elements = transcript_list.find_elements(By.CLASS_NAME, 'event-text')
-        print("\tcomplete")
-    except Exception as e:
-        print(e)
+    while transcript_list == None:
+        try:
+            transcript_list = driver.find_element(By.XPATH, '//*[@id="transcriptTabPane"]/div[3]/ul') #//*[@id="contentsTabPane"]/div[3]/ul
+            text_elements = transcript_list.find_elements(By.CLASS_NAME, 'event-text')
+            print("\tcomplete")
+        except Exception as e:
+            print(e)
+            try:
+                transcript_list = driver.find_element(By.XPATH, '//*[@id="contentsTabPane"]/div[3]/ul') #//*[@id="contentsTabPane"]/div[3]/ul
+                text_elements = transcript_list.find_elements(By.CLASS_NAME, 'event-text')
+                print("\tcomplete")
+            except Exception as e:
+                print(e)
 
     for text in text_elements:
         try:

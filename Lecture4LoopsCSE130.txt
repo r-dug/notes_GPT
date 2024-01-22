@@ -1,0 +1,11 @@
+Lecture4LoopsCSE130
+1 Loops Some operators are particularly useful with loops<br>.
+.
+.
+ Operators (again) The while Loop The while Loop: Flowchart The while Loop Example: Factorial The for Loop 9 10 The for Loop Example: Fibonacci The for Loop Example: Fibonacci 11 The do-while Loop The do…while Loop Example: Factorial Break Statement Continue Statement Nested Loops Nested Loop – Example: Math Game Converting for loop to while loop Infinite Loops Infinite Loops: Example Keeping a running sum<br>void main() {<br>	int sum = 0,.
+.
+.
+ More Examples: while loop Adding the first ten positive even numbers (2, 4,.
+.
+.
+ More Examples: for loop 25 More Examples: do…while System Calls The End! 
