@@ -32,20 +32,7 @@ def send(
         max_tokens=120000, 
         lesson = None
         ):
-    """
-    Send the prompt at the start of the conversation and then send chunks of text_data to ChatGPT via the OpenAI API.
-    If the text_data is too long, it splits it into chunks and sends each chunk separately.
-
-    Args:
-    - prompt (str, optional): The prompt to guide the model's response.
-    - text_data (str, optional): Additional text data to be included.
-    - max_tokens (int, optional): Maximum tokens for each API call. Default is 2500.
-
-    Returns:
-    - list or str: A list of model's responses for each chunk or an error message.
-    """
-
-
+    
     if not text_data:
         return "Error: Text data is missing. Please provide some text data."
 
@@ -67,27 +54,7 @@ def send(
     responses = []
     messages = [
         {"role": "system", 
-         "content": f"""You are an intelligent note taker for a Computer science class on programming in C and C++ languages.
-                        Your task is to read the transcripts of lectures given to you in the following messages and take detailed, organized notes on the subject matter in beautifully formatted HTML.
-                        If anything needs clarification in the lecture notes, use your already expert level knowledge of programming in C and C++ as context for your note taking activity. 
-                        For all concepts, provide examples to illustrate what you are talking about. Lastly, provide hyperlinks to further reading and docs.
-                        Essentially, if someone were to read your notes, they should be able to understand the concepts expressed by the professor during the lecture.
-                        
-                        You may notice due dates in the transcript- make special note that some of the due dates may be incorrect. 
-                        Check any due dates you notice in the transcrit against the list of correct due dates listed below:
-                        Wednesday, 2/21 C Exam; Monday, 4/8 C++ Exam; Monday, 4/15 Student ppt; Wednesday, 4/17 Student ppt; Monday, 4/22 Student ppt
-                        If any assignments are listed outside of the scope of the due dates I have listed for you, make note of them as well, but after the assignment, write '**not_in_sylabus**'.
-                        When you make note of the due date, do so in the following format: ASSIGNMENT: [ASIGNMENT] | DUE: [DUE DATE]
-                        For example, the due date for the c exam would be listed as such: ASSIGNMENT: C Exam | DUE: Wednesday, 2/21
-
-                        You may also notice the professor make note of things that will be on the exam. 
-                        Make special note of those things too, in the following format: THIS WILL BE ON THE EXAM: [A NOTE ABOUT THE THING]
-                        For example, if the professor mentions that the fact the sky is blue will be on the exam, make not of it as such: THIS WILL BE ON THE EXAM: The professor will ask us what color the sky is. We should understand that the sky is blue.
-                        
-                        Because the whole transcript for any given lecture is likely too long for me to send it to you all at once, I will Send it to you in chunks.
-                        When I am finished, I will tell you 'ALL CHUNKS SENT!!!'. Do not answer until you have received all the parts.
-                        
-                        The name of this lesson is {lesson}.
+         "content": f"""{sys_prompt}{lesson}.
                         """}
     ]
 
@@ -111,14 +78,20 @@ if __name__ == "__main__":
     target_dir = input("What directory would you like to put the notes in?\nEnter full path: ")
     start = datetime.now()
     banner = '\n\n'+'*'*100+'\n\n'
-    if len(sys.argv) < 2:
-        print("Usage: python3 gpt_notes.py [path_of_txt_file_to_send_to_ChatGPT]")
+    if len(sys.argv) < 3:
+        print("Usage: python3 gpt_notes.py [path_transcript_to_send_to_ChatGPT] [path_system_prompt]")
         exit()
-    # Specify the path to your file
+    
+    # get lecture transcript
     file_path = sys.argv[1]
-    lesson = file_path.strip("CSE130.txt")
-    # Read the content of the file
     file_content = read_file_content(file_path)
+    
+    # specify name of lesson 
+    lesson = file_path.strip(".txt")
+
+    # get system prompt of gpt from text file in args
+    sys_prompt_path = sys.argv[2]
+    sys_prompt = read_file_content(sys_prompt_path)
 
     # Send the file content to ChatGPT
     print(f"{banner}fetching notes from ChatGPT API{banner}")

@@ -1,0 +1,98 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lecture 5: Functions in C and C++</title>
+    <style>
+        body {font-family: Arial, sans-serif;}
+        h2 {color: #2F4F4F;}
+        pre {background-color: #F8F8F8; padding: 5px; border-left: 4px solid #DDDDDD;}
+        .code-example {background-color: #F0F0F0; padding: 10px; border-left: 4px solid #9E9E9E; margin-top: 10px;}
+        .important {font-weight: bold;}
+        .due-date {font-weight: bold; color: #D2691E;}
+        .exam-note {font-weight: bold; color: #008B8B;}
+        .external-link {text-decoration: none; color: #0645AD;}
+        .not-in-syllabus {color: red;}
+    </style>
+</head>
+<body>
+    <h1>Lecture 5: Functions in C and C++</h1>
+
+    <h2>Introduction to Functions</h2>
+    <p>Functions are fundamental to breaking down complex projects into smaller, more manageable units of code. They allow for code reusability, information hiding, minimizing exposure to internals, and reducing bugs. This kind of top-down design approach leads to code that is easier to understand, debug, and maintain.</p>
+
+    <h2>What is a Function?</h2>
+    <ul>
+        <li>A <strong>function</strong> is a named block of code, carrying out a specific task.</li>
+        <li>It has a set of parameters it expects to receive.</li>
+        <li>It has a return type, which dictates the type of value it sends back to the caller.</li>
+    </ul>
+    
+    <h2>Using Functions</h2>
+    <p>You have been using functions such as <code>printf</code>. Understanding how to <strong>invoke</strong> or <strong>call</strong> these functions is crucial.</p>
+    <p>As programmers, we can create <strong>customized functions</strong> for our specific needs. The process involves defining a <strong>function prototype</strong> and later providing the <strong>function definition</strong>.</p>
+
+    <h2>Function Prototype</h2>
+    <p>A function prototype informs the compiler about:</p>
+    <ul>
+        <li>The function's name.</li>
+        <li>The number and type of parameters.</li>
+        <li>The return type of the function.</li>
+    </ul>
+
+    <h2>Function Definition</h2>
+    <p>When defining a function, in addition to the return type and name, you provide:</p>
+    <ul>
+        <li>A set of parameter names and their types.</li>
+        <li>The body of the function, where the actual computations or operations are performed.</li>
+    </ul>
+
+    <h2>Function Call</h2>
+    <p>A function call is where you invoke the function and pass any required arguments. The function performs its operation and returns a result, if applicable.</p>
+
+    <h2>Information Hiding and Scope</h2>
+    <p>Information hiding is a principle that ensures only the necessary details of a function's operation are visible to its caller, providing a clear public interface to the function. This is where a function's <strong>scope</strong> comes in:</p>
+    <ul>
+        <li>A variable's <strong>scope</strong> indicates where the variable is accessible within the code.</li>
+        <li>Variables declared within a function are local to that function and are not accessible outside it.</li>
+        <li>Global variables, on the other hand, are accessible throughout the entirety of the code.</li>
+    </ul>
+
+    <h2>Parameter Passing</h2>
+    <p>There are two main ways to pass arguments to functions:</p>
+    <ul>
+        <li><strong>Pass by value:</strong> A copy of the argument's value is passed to the function. Changes to the argument within the function do not affect the original variable.</li>
+        <li><strong>Pass by reference:</strong> The actual variable's address is passed to the function, allowing changes within the function to affect the original variable.</li>
+    </ul>
+
+    <h2>Storage Classes</h2>
+    <p>Variables can be categorized based on their storage duration and scope:</p>
+    <ul>
+        <li><strong>auto:</strong> The default storage class for local variables.</li>
+        <li><strong>static:</strong> For retaining variable values even after the function ends. They can be local or global.</li>
+        <li><strong>register:</strong> Hints to the compiler to store the variable in a register for fast access.</li>
+        <li><strong>extern:</strong> Declares a global variable that can be accessed across multiple files.</li>
+    </ul>
+
+    <h2>Best Practices</h2>
+    <p>Use local variables over global variables whenever possible.</p>
+
+    <h2>Important Notes and Due Dates</h2>
+    <p class="due-date">ASSIGNMENT: C Exam | DUE: Wednesday, 2/21</p>
+    <p class="due-date">ASSIGNMENT: C++ Exam | DUE: Monday, 4/8</p>
+    <p class="due-date">ASSIGNMENT: Student ppt | DUE: Monday, 4/15</p>
+    <p class="due-date">ASSIGNMENT: Student ppt | DUE: Wednesday, 4/17</p>
+    <p class="due-date">ASSIGNMENT: Student ppt | DUE: Monday, 4/22</p>
+    <p class="exam-note">THIS WILL BE ON THE EXAM: Understanding the differences between passing by value and passing by reference.</p>
+    <p class="exam-note">THIS WILL BE ON THE EXAM: The concept of variable scope and how it affects variable visibility.</p>
+    
+    <h2>Further Reading and Documentation</h2>
+    <ul>
+        <li><a class="external-link" href="https://en.cppreference.com/w/" target="_blank" rel="noopener">C++ Reference Documentation</a></li>
+        <li><a class="external-link" href="https://www.learncpp.com/" target="_blank" rel="noopener">Learn C++ Tutorial</a></li>
+        <li><a class="external-link" href="https://www.tutorialspoint.com/cprogramming/" target="_blank" rel="noopener">C Programming Tutorial</a></li>
+    </ul>
+
+</body>
+</html>
+```

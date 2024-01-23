@@ -1,0 +1,409 @@
+Lecture5FunctionsCSE130
+All right, let's get started.
+ Any questions for me before we begin today's lecture? So today we're going to finally start learning about functions.
+ If you remember, we started programing and I kind of told you, just use it for now as magical keywords and one day you'll understand what main is and what printf is in terms of its.
+ Definitions what a function is.
+ Parameter lists return statements.
+ That day has come here and today we're going to learn how to create our own customized functions.
+ One of the main advantages of using functions is that you can break up complicated projects into smaller, reusable units of code.
+ So instead of having to write something very complex, if I tell you to write an operating system, that should be overwhelming.
+ But if I can break it up into smaller units, small problems your function to verify password you a function to display a window will distribute those functions to students in a class that becomes a lot more manageable.
+ And not only that, we can also use some of that code.
+ Maybe someone else somewhere needs to verify password and they can just reuse your function.
+ It also helps with kind of reducing amount of exposure for internals of the code information hiding.
+ So there is less chance of bugs being introduced through improper manipulation of data.
+ This top down design approach where we break down a complex project into its components.
+ Break each component down into smaller and smaller units until each function, each essentially black box does just one thing.
+ If you need to explain what your function does and you saying, Well, it adds numbers and predicts stock market, it's too much.
+ It has to do just one thing and do it well.
+ Easy to debug and once you get it working, it's there.
+ You don't have to worry about it.
+ It's already debugged and you can share it with others.
+ So for the usability.
+ Reduce this amount of debugging time, commenting time.
+ If you have access to libraries from other people, reduce overall time to create your product.
+ So you've been using functions like print.
+ Definitely easier than having to write it from scratch.
+ All you need to know is how to utilize that function.
+ You make sure my microphone is still doing what it should be doing.
+ Like surprises that okay, still working.
+ Any questions so far? With regards to information hiding.
+ What we want to do is provide some sort of a public interface for our function.
+ So let's look at the example of print that you all have used it by now.
+ How many actually found the code for print and know how it works inside? What's what's happening there? Okay.
+ I want one person.
+ Very cool.
+ But you don't care, right? You just need it to work.
+ And if tomorrow we discover a ten times faster algorithm for printing out stuff, they can replace current printer algorithm with the new ten times faster printer.
+ If you get better performance, your code still works.
+ You don't have to change anything in your code because your code does not rely on how print works.
+ That part is hidden from you.
+ All you see is a public interface to use the printers.
+ That's a great feature.
+ That's not a bug.
+ We want to keep doing it that way.
+ So what is the function? It's a set of instructions.
+ A block of code has a name.
+ Has a list of variables, parameters it expects to receive so it can do its job and it has a return Type A data, type A value it returns, which is kind of like a mathematical function.
+ You can expect that this function will return an integer or float.
+ A good way to visualize it is, like I said, a black box.
+ You have some sort of inputs going in, some computation you don't know about taking place on the inside, and then a specific value is returned from that function.
+ Now, it's possible that there is some internal functions within the function.
+ Internal variables.
+ Things get manipulated, but we don't see any of that externally.
+ All we see is the input and output relationship.
+ There's a lot of useful functions out there.
+ Whole libraries of useful functions were looked at, print of scan F, but there are also libraries for can replace closed the doors.
+ Thank you so much.
+ There are functions for checking the type of a character we deal with.
+ There are functions which allow you to have mathematical operations, such as finding square roots of numbers.
+ And again, you don't have to write those from scratch.
+ So common thing to need to be able to do is so everyone can just rely on existing libraries.
+ But sometimes you have a project where you're trying to do something unique, something novel, and that's where you need to learn to make your own functions.
+ Let's look at the process for doing that.
+ If you remember what variables before starting to use a variable, we had to kind of tell the compiler about the variable.
+ It is a similar process of introducing function to the compiler, and that's where we provide a function prototype.
+ We say, okay, we're going to have a function with this name, this set of arguments, and it's going to return this type.
+ And later on we can define what happens inside the function.
+ But the first step is exactly that we want to provide information about.
+ The public interface of that function.
+ So here's a few examples few function prototypes, and you should be able to figure out what the function expects and what it returns.
+ Hopefully you have some sort of a meaningful name for your function.
+ And then from the type of arguments you can kind of complete the picture.
+ So let's say I have a function called add two numbers.
+ What do you think that function does? So probably add two numbers.
+ In this case, it looks like it once two integers.
+ If you add two integers, you'll get a sum, which is also an integer.
+ So that's the return type.
+ So we start with what is the return type? Meaningful name in parentheses.
+ List of arguments.
+ Sometimes a function does useful work, but does not compute anything.
+ You may have a function with just prints a balance.
+ You can say that the return type is void.
+ Doesn't return anything.
+ Non-existent return type.
+ It still needs a balance to print so I can give it.
+ In this case, for some reason it's an integer.
+ More likely it's a float, but that's what happens in that function.
+ Sometimes a function doesn't need any arguments to do its job.
+ It already knows everything it needs to know.
+ So something like create a random number may just return a random integer to you.
+ It requires no parameters to be passed in.
+ So that's the function prototype.
+ You want it above, above everything else.
+ So it's visible.
+ So other parts of your code which rely on this function.
+ I've access to it.
+ It's also common to have separate.
+ Public interface and then definition file, we'll see a lot more of it.
+ Then we get to classes and we'll see how to create header files and then implementation files.
+ But for now, we'll just put it all in one source file to make it easy.
+ Any questions about function prototypes? Mm hmm.
+ That create random number is the word void there required for community.
+ You can have just nothing.
+ Nothing is good enough.
+ Sometimes it's good to be explicit, but yeah, you can admit it.
+ Okay, so now we introduced our functions.
+ How do we actually implement them? We provide function definitions.
+ So here I have at the top my prototype function at two numbers.
+ And then after main, I provide the function definition for it.
+ I know this.
+ Don't just list the types of parameters.
+ I also have names for variables matching the type of parameters.
+ So there are two.
+ Two pieces of information going in are apparent.
+ One, an apparent tool.
+ All of the function does is adds them and returns that value back to whoever is using this function.
+ So in the prototype, all you need is the data types in order.
+ Then you writing a definition.
+ You have to give them actual names because you need to work with them.
+ So you need to be able to refer to them by a specific variable name.
+ Now.
+ So we have this function, we have a public interface.
+ How do we actually use this function? How do we call on this function? And that's the function call part.
+ So within my main function, I would like to figure out what the result is.
+ And all I do is I call the two numbers function, give it to actual arguments.
+ Five and six.
+ And whatever that function returns gets stored in a result.
+ So what a percent of a function could be numerical constants, could be variables, could be expressions which simplify to an expected data type, in this case, integer and integer.
+ Any questions so far? Yes, but that's a very creative person here because.
+ It doesn't have the possibility to sell or to find.
+ Sustaining a function, calling the function.
+ The I wasn't able to add to numbers five six.
+ There were columns in the actual numbers, but the actual numbers haven't been defined yet.
+ So the man won't be able to run in front of a parsing error.
+ Well, Main has the prototype in front of it and the definition follows.
+ So once I give it prototype, it will look up what the definition has, and that's given.
+ That's why we have a prototype there, technically.
+ You don't even have to.
+ Like, I don't want to tell you this, but you don't need a prototype.
+ You can just have a function up there.
+ But in this case, because we want to do it right, we start with a prototype, and then somewhere else, we just commit to explaining what that represents.
+ Yeah, absolutely.
+ Good question.
+ So let's figure out this function argument situation we have.
+ Prototype, which just lists the data types.
+ And then we have definition, which has some sort of variable names associated with those.
+ The names between what the function itself is calling it and the names provided by the caller don't have to match their Remember, there is information hiding so that independent.
+ Here.
+ For example, I have a prototype for computing area of a triangle function takes two doubles returns of double the definition and expects to get a base and a height and return just a formula for the area.
+ The call would be a triangle area with some specific numerical constants.
+ This is the mapping we have.
+ So if I make a call with two variable names, whatever they are in my mean, let's say user base and user height provided by the user, those would get mapped onto base and height variables from the function.
+ And we know how to do the mapping because they come in order of appropriate type.
+ So the actual arguments are the arguments supplied to the function at the function call, and then the formal arguments are the arguments, the function.
+ Has in its definition.
+ Any questions about that? Okay, so that's Fonctions.
+ Now we can talk more about how to get data into functions.
+ What are the different ways to pass parameter space arguments into functions? There are two main types of doing that.
+ One is then we pass by value.
+ And the other is a pest by reference.
+ But by value means we are sharing information.
+ The value itself gets copied into the function.
+ Since we're working with a copy.
+ Whatever happens to that copy has no impact on the actual variable outside the function.
+ A personal reference is different here.
+ We actually passing the variable itself the address of a variable.
+ So any changes to that location inside the function also impact that variable outside the function.
+ And there are different reasons for using one or the other.
+ First by value guarantees that you're not going to mess up.
+ Data.
+ You just working with a copy.
+ It may be expensive to copy large amounts of data.
+ Computationally expensive.
+ Personal preferences cheap.
+ You just sharing an address of a variable, but you are working with the actual data.
+ So if you somehow corrupted, that could be problematic.
+ When you passing by volume.
+ You just provide actual arguments.
+ Two, the function function maps, the month, the formal arguments, matching type and order, and whatever happens after the function does its job is not a permanent change to the value outside of a function.
+ The function goes out of scope, something we'll see soon and all those local variables get.
+ Terminated.
+ And essentially, it's like never happened.
+ Whatever data you obtain from a function, you have to capture and preserve.
+ But the changes made to those variables are not permanent.
+ So if you would like to capture some.
+ Returned result from that function.
+ You have to store it elsewhere.
+ If you need access to anything internal from that function, you need to find another way of transferring that data out.
+ So all we do is a simple mapping, again from external variable to an internal variable within the function, from formal argument, from actual arguments to formal arguments.
+ And we work with those.
+ Let's see an example.
+ So here I have a prototype for a function which takes a single variable.
+ An integer computes some sort of a information about bricks.
+ Doesn't really matter to us and returns an integer.
+ The definition says that it takes number of bricks, multiplies it by three.
+ That's the result variable local to the function.
+ And then we overwrite the number of bricks, the variable given to us.
+ This is a change which happens to work very well inside the function.
+ And so any statement after that one would.
+ Would have to see a number of bricks.
+ US zero.
+ We returned the result, which is three times the original number of breaks.
+ Someone external can call on this function, but this reset of the number of bricks does not actually impact the brakes variable being passed into the function at the time of the call.
+ So think of it as working with a copy of a document.
+ So you have the US Constitution, right? You make a photocopy of it.
+ You make all sorts of corrections and a copy doesn't matter.
+ The original stays intact.
+ If you decide to destroy your copy later, we still have original information unchanged.
+ Questions about that.
+ Yes, with a number of breaks, would that line really be necessary? When you call again, you're going to override zero to a new value.
+ In the formula.
+ This line is absolutely unnecessary.
+ I'm giving you an example of like what it's going to do to the information.
+ This function is not of unnecessary.
+ It's like I make examples of random break information.
+ You write that it has no impact on what happens to result.
+ Right.
+ All I'm trying to show is that whatever changes I make within the function states, it's like Vegas.
+ What happens in Vegas stays in Vegas, you know? That's.
+ That's the idea.
+ Okay.
+ And unless you smuggle pictures out, then you're in trouble.
+ Okay.
+ So let's see the complement of that passing by reference.
+ This is where you provide the actual address of a variable, meaning you're working with the original document.
+ You marking the Constitution.
+ Right.
+ How does it look different? We have this ampersand symbol which says, take the address.
+ I suppose the reference for working with address.
+ So prototype again, we have a break in for function.
+ Number of bricks is a standard variable, an integer.
+ Double wade and double the volume are both fast by reference.
+ The function itself doesn't return anything.
+ How do I smuggle information out of a function with no return type? I write directly to addresses of variables external to the function.
+ So here I'm computing.
+ The definition is am computing the volume and the weight.
+ So there is a formula.
+ Doesn't really matter what it does.
+ Those two variables, the volume and the weight are addresses.
+ So after the function terminates, I have made changes to weight and volume variables which were used in a function call because I grabbed their address and wrote to that.
+ So this is one way to get more information out of a function return type returns.
+ One data type could be a complex data type, but it's one data type.
+ If I write directly to address this, I can do a lot of this information smuggling.
+ The questions about that.
+ So a few times now I use that word scope going out of scope.
+ What does that mean? This is the visibility range of the variable of function.
+ If you declare a variable within a function, it's local to a function.
+ That's where it is meaningful and can be seen and can be used out of that function.
+ Nobody knows about it.
+ It's out of scope.
+ I don't know if you can see well, this picture, but doesn't really matter.
+ You just have to see the mappings of.
+ Location of where a variable is declared versus where it is visible to.
+ Something declared at the very top of a file.
+ Global variables seen by everyone.
+ Easy access.
+ I don't have to do anything.
+ Everyone knows if I refer to something global what that variable is.
+ If there is a function.
+ And within it I have a variable.
+ That variable is local to that function.
+ Interestingly, I can.
+ Kind of hide the global variable by creating a local variable with the same name and local scope.
+ How does that work? So who's the president of the United States right now? Joe Biden global variable.
+ We all know if I say Joe Biden, what it refers to, Right.
+ Joe Biden.
+ I'm not going to comment, but let's say we have a student in our class and his name is Joe Biden.
+ That's a local variable.
+ Local Joe Biden.
+ If I say in our class, Joe Biden did such a great job on this project.
+ I'm referring to which variable? Local one because we hit the global.
+ Joe Biden Right.
+ If I refer to President Joe Biden, I can escape lock of scope and go of a global scope.
+ But that's the idea of scope.
+ And I use this example with every president.
+ And sometimes it's funny, even in our times it's just.
+ Any questions about this? Yeah.
+ Let's say you did find you had a variable and.
+ The global scope and you define a variable of the same name and a local scope.
+ In that local scope, can you still access the global world or at that point, is there just no way to because you've already defined it? Right.
+ That's a great, great question.
+ And as I said, I can access global one, but I have to prefix it in my human example.
+ I said the president, Joe Biden.
+ Here there is an equivalent where I can refer to scope.
+ We will see something called scope resolution operator, which allows me to escape local scope, go to global variables, or if we're talking about classes later on, what class does the variable belong to? So we just have to give it more information.
+ But yes, you can absolutely do that.
+ You don't completely lose it.
+ You just kind of hiding it for shorthand notation.
+ Yes.
+ What's the.
+ So you may have mentioned this already, but what's the what's the difference between like a global and a local? It sounds like you're just like making different variables because, you know, if you just put like Joe Biden one Joe Biden.
+ Q You could technically differentiate them still, but like what makes one global or the other might not be able to reference a local one later on in a different program? No, because local days out, then this semester is over.
+ Then this class no longer exist.
+ I cannot refer to Joe Biden, the student, because I have no way to track it.
+ I don't know if they graduated or died.
+ I don't know anything about them.
+ But example.
+ But the global is visible to everyone.
+ They don't need to request special access and there is no information hiding local like you in this class.
+ I don't tell about your grades to anyone.
+ It's embarrassing.
+ I don't want to share this so it stays local global information.
+ Everyone sees it.
+ It's easier.
+ But the problem is our people can mess with global variables and change value of pie if it's global.
+ You don't want that, so you make it protected in that way.
+ Okay, sure.
+ Anything else? So now that I told you about local and global variables, I guess the next stage is to tell you don't use global variables global as bad, use local variables because they are protected and hide information well.
+ And so it's a preferred way.
+ And now that you know how to pass arguments to functions by value and by reference, that's the preferred way of doing it.
+ You take this piece of information and you give it to whoever needs it, and they have limited ability to change it.
+ So that's what you want.
+ Global It's easy to write code with everything in the open, but it's not good for safety and security.
+ Any questions about that? So you can figure out the scope of a variable based on where it is declared.
+ In fact, you can even create artificial scope.
+ You can just put curly brackets anywhere in your code that creates a block of code and you can make a variable local to that environment.
+ As I said, global variables are not subject to those local restrictions, so we would like to avoid using them.
+ It's a bad style to rely on global variables.
+ So here's an example for what I just mentioned creating an independent block of code.
+ All you do is insert the curly braces and anything into Durex created in this context is local to that environment.
+ As soon as they exit this block of code, it's like this variable doesn't exist anymore.
+ So local variables exist as long as the block exists.
+ If it's a function, they exist.
+ As long as that function is operating, then you exit the function.
+ They stop existing in case of a loop.
+ They exist.
+ As long as the loop is running, you're going to have a variable declared within the for loop, for example.
+ Depending on what standard you use, your compiler may yell at you and not like that.
+ So if that happens to you or change the version you're using or put the declaration outside of a for a loop.
+ But the point is that AI variable is only active within the loop and it hides any I variable outside of a loop for the duration of loops iterating.
+ Questions.
+ Okay.
+ So that was one of the important things I wanted to cover and make sure you understand functions passing by value, passing by reference and scope.
+ Now there is a few other topics which you should know about, but they are less important.
+ We can classify variables into different storage classes based on where they are located and ease of access.
+ Those will be out of static, external and register.
+ Auto referring to local variables is basically the default.
+ That's what we've been using.
+ And you just create an integer local variable.
+ It's considered an order variable.
+ Since it's default, it's not used for much.
+ That's the given.
+ And it's restricted to local variables.
+ You cannot have a global variables of that.
+ Static variables are interesting and we'll see them again in a few lectures.
+ They give us ability to add essentially memory, somewhat semi-permanent memory to things like functions.
+ What a static variable does it? Retains its value.
+ So if you come back to that function again, it does not re initialize the variable, it keeps the previous value and updates it.
+ So let's say I have a function called counter which takes no arguments.
+ Returns an integer it inside of it.
+ It has a static variable.
+ Four, counting starting at zero.
+ Every time I run this function, it adds one to the counter variable.
+ First time I ran it, it initializes to zero returns.
+ That value updates the variable.
+ Second time around it is plus one.
+ So let's say I have a database where I keep adding users to the database.
+ If I call this function every time it happens, I would have a number of users in the database counter.
+ So if it wasn't a static variable, every time it would reset to zero.
+ If it's a static one, it skips that re initialization step.
+ Next time you're on it.
+ We'll see it again and we'll talk about classes and members of a class and things like that.
+ Another type of local variables are registered type variables.
+ This has to do with speed of access.
+ The fastest memory is register memory right next to the processor.
+ Very limited, very expensive.
+ If you know that some variable is going to be used frequently, you may hint to the compiler that it should be placed in one of the registers for easy access.
+ But there is a good chance that a modern compiler will do a better job optimizing code than you.
+ So it will just treat it as a suggestion and ignore you anyways and decide on its own what's better because it's smarter than you.
+ So you know what it does.
+ You know what it is intend to do, but probably you don't need to worry about it.
+ And definitely not for any of your labs in this class.
+ Now for global variables.
+ There are additional classifiers for static and external variables, which tells us about how variables are seen across files.
+ So if you have a large project with multiple files, you may be declaring a variable in one file.
+ And you might be interested in making it accessible in another file.
+ If you want to restrict access to within the file, you can indicate that a global variable is static with a reserved keyword static.
+ So they would be only accessible from within that file.
+ If you want to increase the scope of a variable to another file you declared as external, and then other locations in our files will also have access to it.
+ We can see.
+ Two files here.
+ Essentially an example of both cases.
+ So file one, file two.
+ There is integer price float yield static double coupon in file one.
+ Later on.
+ I have external interest.
+ Invited to have double endorsed Externe in price.
+ And some functions which may be interested in working with those variables.
+ So you see that static variable coupon would be limited in visibility to file one and functions in file one.
+ Whereas if I make interest variable external, it is shared and visible between the files.
+ As I said, it's not as important to us.
+ Probably the most important concept from today is difference between passing by value and passing by reference.
+ As long as you understand that you will do well and you will be well prepared for a lecture on pointers.
+ Any questions about anything? Yes.
+ You might go back as far back as slide.
+ Yes.
+ What does this mean? Is it the global variable way? What is making it static? Do it static with the variables defined in a function.
+ Static makes it stay between.
+ Function.
+ Calling doesn't doesn't last for the entire duration of the program anyway, even if you didn't find it in static.
+ So we're talking about access to it from file to it is not visible in file to.
+ If you didn't have the word static there, if it was just double compound, would it be accessible? It depends on how the files are included, but if all the files are included into that project, then it's a global variable.
+ It would be accessible for static.
+ Just make sure it makes sure it is limiting scope.
+ Yes.
+ All right.
+ Thank you.
+ And if you have any individual questions, I'll stay and help you out with those.
+ 
