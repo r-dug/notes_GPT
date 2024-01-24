@@ -3,6 +3,7 @@ import os
 import time
 from datetime import datetime
 import sys
+import json
 required_packages = ["requests", "fake_useragent","selenium", "webdriver_manager", "csv", "openai", "pyautogui"]
 for package in required_packages:
     try:
@@ -19,6 +20,10 @@ from selenium.webdriver.support import expected_conditions as EC
 from fake_useragent import UserAgent
 import pyautogui
 
+with open('config.json', 'r') as file:
+    config_data = json.load(file)
+username = config_data['BLACKBOARD_UNAME']
+password = config_data['BLACKBOARD_PASS']
 def ok_cookies(driver):
     # find cookie button by XPATH and press it
     ok_cookies_button = driver.find_element(By.XPATH, '//*[@id="agree_button"]')
@@ -30,31 +35,16 @@ def SSO(driver):
     href = SSO_element.get_attribute("href")
     driver.get(href)
     time.sleep(3)
+    
     # driver.find_element(By.TAG_NAME,'body').send_keys('rcdoug03@louisville.edu')
-    username = os.getenv("BACKBOARD_UNAME")
-    password = os.getenv("BACKBOARD_PWD")
-    if username != None:
-        try:
-            pyautogui.typewrite(username)
-        except Exception as e:
-            print(e)
-    else:
-        print("you need to add credentials.\n HINT: find the 'username' and 'password' variables in the panopto_notes.py file....")
-        exit()
+    pyautogui.typewrite(f"{username}")
     driver.find_element(By.TAG_NAME,'body').send_keys(Keys.TAB)
     driver.find_element(By.TAG_NAME,'body').send_keys(Keys.TAB)
     driver.find_element(By.TAG_NAME,'body').send_keys(Keys.TAB)
     # driver.find_element(By.TAG_NAME,'body').send_keys(Keys.TAB)
     pyautogui.press('enter')
     time.sleep(2)
-    if password != None:
-        try:
-            pyautogui.typewrite(password)
-        except Exception as e:
-            print(e)
-    else:
-        print("you need to add credentials.\n HINT: find the 'username' and 'password' variables in the panopto_notes.py file....")
-    
+    pyautogui.typewrite(f"{password}")
     # driver.find_element(By.TAG_NAME,'body').send_keys(Keys.TAB)
     # driver.find_element(By.TAG_NAME,'body').send_keys(Keys.TAB)
     time.sleep(1)
@@ -113,21 +103,13 @@ def find_transcript(driver, title):
 
     # empty string to fill with transcript
     transcript = f"{title}\n"
-    transcript_list = None
     print("finding transcript elements and compiling list")
-    while transcript_list == None:
-        try:
-            transcript_list = driver.find_element(By.XPATH, '//*[@id="transcriptTabPane"]/div[3]/ul') #//*[@id="contentsTabPane"]/div[3]/ul
-            text_elements = transcript_list.find_elements(By.CLASS_NAME, 'event-text')
-            print("\tcomplete")
-        except Exception as e:
-            print(e)
-            try:
-                transcript_list = driver.find_element(By.XPATH, '//*[@id="contentsTabPane"]/div[3]/ul') #//*[@id="contentsTabPane"]/div[3]/ul
-                text_elements = transcript_list.find_elements(By.CLASS_NAME, 'event-text')
-                print("\tcomplete")
-            except Exception as e:
-                print(e)
+    try:
+        transcript_list = driver.find_element(By.XPATH, '//*[@id="transcriptTabPane"]/div[3]/ul')
+        text_elements = transcript_list.find_elements(By.CLASS_NAME, 'event-text')
+        print("\tcomplete")
+    except Exception as e:
+        print(e)
 
     for text in text_elements:
         try:
@@ -146,9 +128,6 @@ def format_transcript(transcript):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print("You are missing an argument, trying to run this program. \nUsage: python3 panopto_notes.py [URL_of_a_Panopto_lecture_video (if you have access to that from blackboard)]")
-        exit()
     start = datetime.now()
     url = sys.argv[1]
     ua = UserAgent()

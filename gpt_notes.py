@@ -1,8 +1,12 @@
 # standard python packages
 import os
 import sys
+import json
 from datetime import datetime
 
+with open('config.json', 'r') as file:
+    config_data = json.load(file)
+OPENAI_API_KEY = config_data['OPENAI_API_KEY']
 # check for required non standard packages, if not found, install then import them.
 required_packages = ["openai", "tiktoken"]
 for package in required_packages:
@@ -16,19 +20,18 @@ import tiktoken
 from openai import OpenAI
 
 
-if not os.environ.get("OPENAI_API_KEY"):
+if not OPENAI_API_KEY:
     print("you need to find out how to use the chatGPT API... \nCreate an account there, create an API key, and add that as an environment variable on your machine so you can run this code.")
     exit()
 # Set up your OpenAI API key
 client = OpenAI(
     # This is the default and can be omitted
-    api_key=os.environ.get("OPENAI_API_KEY"),
+    api_key=OPENAI_API_KEY,
 )
 
 def send(
         text_data=None,
         chat_model="gpt-4-1106-preview",
-        model_token_limit=120000,
         max_tokens=120000, 
         lesson = None
         ):
