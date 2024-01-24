@@ -4,6 +4,7 @@
     "blackboard_uname": "",
     "blackboard_pass": "",
     "OPENAI_API_KEY": "",
+    "sys_prompt": "",
     "verbosity": 1
   }
   
