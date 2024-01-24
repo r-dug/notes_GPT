@@ -1,0 +1,9 @@
+{
+    "app_name": "gpt_notes",
+    "version": "1.0.0",
+    "blackboard_uname": "",
+    "blackboard_pass": "",
+    "OPENAI_API_KEY": "",
+    "verbosity": 1
+  }
+  
