@@ -25,6 +25,9 @@ sys_prompt = read_file_content(sys_prompt_path)
 if not OPENAI_API_KEY:
     print("you need to find out how to use the chatGPT API... \nCreate an account there, create an API key, and add that as an environment variable on your machine so you can run this code.")
     exit()
+if not sys_prompt:
+    print("you need to change the config file to contain the path to the desired system prompt...")
+    exit()
 # Set up your OpenAI API key
 client = OpenAI(
     # This is the default and can be omitted
