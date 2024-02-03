@@ -114,7 +114,7 @@ if __name__ == "__main__":
         print(f"{banner}Notes written to {target_dir}{lesson}_notes.html{banner}")
     except Exception as e:
         print(e)
-        with open(f"./{lesson}_notes.html", "w") as f:
+        with open(f"./../notes/{lesson}_notes.html", "w") as f:
             for response in responses:
                 f.write(response)
         print(f"{banner}However, notes written to ./{lesson}_notes.html{banner}")
