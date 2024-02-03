@@ -2,6 +2,7 @@
 import os
 import sys
 import json
+import re
 from datetime import datetime
 
 # check for required non standard packages, if not found, install then import them.
@@ -15,24 +16,6 @@ for package in required_packages:
         os.system(f"pip install {package}")
 import tiktoken
 from openai import OpenAI
-
-
-with open('config.json', 'r') as file:
-    config_data = json.load(file)
-OPENAI_API_KEY = config_data['OPENAI_API_KEY']
-sys_prompt_path = config_data['sys_prompt']
-sys_prompt = read_file_content(sys_prompt_path)
-if not OPENAI_API_KEY:
-    print("you need to find out how to use the chatGPT API... \nCreate an account there, create an API key, and add that as an environment variable on your machine so you can run this code.")
-    exit()
-if not sys_prompt:
-    print("you need to change the config file to contain the path to the desired system prompt...")
-    exit()
-# Set up your OpenAI API key
-client = OpenAI(
-    # This is the default and can be omitted
-    api_key=OPENAI_API_KEY,
-)
 
 def send(
         text_data=None,
@@ -82,7 +65,24 @@ def read_file_content(file_path):
 
 # Use the function
 if __name__ == "__main__":
-    target_dir = input("What directory would you like to put the notes in?\nEnter full path: ")
+    with open('config.json', 'r') as file:
+        config_data = json.load(file)
+    OPENAI_API_KEY = config_data['OPENAI_API_KEY']
+    sys_prompt_path = config_data['sys_prompt']
+    sys_prompt = read_file_content(sys_prompt_path)
+    if not OPENAI_API_KEY:
+        print("you need to find out how to use the chatGPT API... \nCreate an account there, create an API key, and add that as an environment variable on your machine so you can run this code.")
+        exit()
+    if not sys_prompt:
+        print("you need to change the config file to contain the path to the desired system prompt...")
+        exit()
+    # Set up your OpenAI API key
+    client = OpenAI(
+        # This is the default and can be omitted
+        api_key=OPENAI_API_KEY,
+    )
+
+    target_dir = input("\n\nWhat directory would you like to put the notes in?\nRelative path is fine. enter nothing to save to default notes file\nPath: ")
     start = datetime.now()
     banner = '\n\n'+'*'*100+'\n\n'
     if len(sys.argv) < 2:
@@ -94,7 +94,9 @@ if __name__ == "__main__":
     file_content = read_file_content(file_path)
     
     # specify name of lesson 
-    lesson = file_path.strip(".txt")
+    pattern = r'[^\\\/]*(?=\.\w+$)'
+    lesson = re.search(pattern, file_path).group()
+    #  = file_path.strip(".txt").lstrip("/../transcripts/")
 
     # # get system prompt of gpt from text file in args
     # sys_prompt_path = sys.argv[2]
@@ -107,16 +109,15 @@ if __name__ == "__main__":
     
     # first, let's try saving these notes to the directory of the user's choice
     # if that doesn't work or the user didn't select a dir, let's just save it to current dir.
-    try:
+    if target_dir:
         with open(f"{target_dir}{lesson}_notes.html", "w") as f:
             for response in responses:
                 f.write(response)
         print(f"{banner}Notes written to {target_dir}{lesson}_notes.html{banner}")
-    except Exception as e:
-        print(e)
+    else:
         with open(f"./../notes/{lesson}_notes.html", "w") as f:
             for response in responses:
                 f.write(response)
-        print(f"{banner}However, notes written to ./{lesson}_notes.html{banner}")
+        print(f"{banner}However, notes written to ./../notes/{lesson}_notes.html{banner}")
     
     print(f"Runtime: {datetime.now() - start}")
