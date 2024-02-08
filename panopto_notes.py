@@ -152,15 +152,17 @@ if __name__ == "__main__":
         title = get_title(driver)
         print("Trying to get the title again...")
         time.sleep(2)
+        transcript_file = f"./../notes/transcripts/{title}.txt"
     captions(driver)
     time.sleep(1)
     transcript = find_transcript(driver, title)
     transcript = format_transcript(transcript)
     print(transcript)
     print("writing text to file:")
-    with open(f"{title}.txt", 'w', encoding='utf-8') as f:
+
+    with open(transcript_file, 'w', encoding='utf-8') as f:
         f.write(transcript)
         f.close()
-    print(f"Written to: {title}.txt")
+    print(f"Written to: {transcript_file}")
     print(f"RUNTIME: {datetime.now() - start}")
     time.sleep(10)

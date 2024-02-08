@@ -65,17 +65,21 @@ def read_file_content(file_path):
 
 # Use the function
 if __name__ == "__main__":
+
     with open('config.json', 'r') as file:
         config_data = json.load(file)
     OPENAI_API_KEY = config_data['OPENAI_API_KEY']
+
     sys_prompt_path = config_data['sys_prompt']
     sys_prompt = read_file_content(sys_prompt_path)
+
     if not OPENAI_API_KEY:
         print("you need to find out how to use the chatGPT API... \nCreate an account there, create an API key, and add that as an environment variable on your machine so you can run this code.")
         exit()
     if not sys_prompt:
         print("you need to change the config file to contain the path to the desired system prompt...")
         exit()
+
     # Set up your OpenAI API key
     client = OpenAI(
         # This is the default and can be omitted
@@ -96,11 +100,6 @@ if __name__ == "__main__":
     # specify name of lesson 
     pattern = r'[^\\\/]*(?=\.\w+$)'
     lesson = re.search(pattern, file_path).group()
-    #  = file_path.strip(".txt").lstrip("/../transcripts/")
-
-    # # get system prompt of gpt from text file in args
-    # sys_prompt_path = sys.argv[2]
-    # sys_prompt = read_file_content(sys_prompt_path)
 
     # Send the file content to ChatGPT
     print(f"{banner}fetching notes from ChatGPT API{banner}")
@@ -115,7 +114,7 @@ if __name__ == "__main__":
                 f.write(response)
         print(f"{banner}Notes written to {target_dir}{lesson}_notes.html{banner}")
     else:
-        with open(f"./../notes/{lesson}_notes.html", "w") as f:
+        with open(f"./../notes/html/{lesson}_notes.html", "w") as f:
             for response in responses:
                 f.write(response)
         print(f"{banner}However, notes written to ./../notes/{lesson}_notes.html{banner}")
