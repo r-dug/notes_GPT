@@ -76,9 +76,9 @@ if __name__ == "__main__":
     if not sys_prompt:
         print("you need to change the config file to contain the path to the desired system prompt...")
         exit()
+        
     # Set up your OpenAI API key
     client = OpenAI(
-        # This is the default and can be omitted
         api_key=OPENAI_API_KEY,
     )
 
@@ -96,11 +96,6 @@ if __name__ == "__main__":
     # specify name of lesson 
     pattern = r'[^\\\/]*(?=\.\w+$)'
     lesson = re.search(pattern, file_path).group()
-    #  = file_path.strip(".txt").lstrip("/../transcripts/")
-
-    # # get system prompt of gpt from text file in args
-    # sys_prompt_path = sys.argv[2]
-    # sys_prompt = read_file_content(sys_prompt_path)
 
     # Send the file content to ChatGPT
     print(f"{banner}fetching notes from ChatGPT API{banner}")
