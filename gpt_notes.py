@@ -115,7 +115,7 @@ if __name__ == "__main__":
                 f.write(response)
         print(f"{banner}Notes written to {target_dir}{lesson}_notes.html{banner}")
     else:
-        with open(f"./../notes/{lesson}_notes.html", "w") as f:
+        with open(f"./../notes/html/{lesson}_notes.html", "w") as f:
             for response in responses:
                 f.write(response)
         print(f"{banner}However, notes written to ./../notes/{lesson}_notes.html{banner}")
