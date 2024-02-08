@@ -158,7 +158,7 @@ if __name__ == "__main__":
     transcript = format_transcript(transcript)
     print(transcript)
     print("writing text to file:")
-    with open(f"{title}.txt", 'w', encoding='utf-8') as f:
+    with open(f"./../notes/transcripts/{title}.txt", 'w', encoding='utf-8') as f:
         f.write(transcript)
         f.close()
     print(f"Written to: {title}.txt")
