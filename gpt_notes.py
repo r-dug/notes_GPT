@@ -2,11 +2,9 @@
 import os
 import sys
 import json
+import re
 from datetime import datetime
 
-with open('config.json', 'r') as file:
-    config_data = json.load(file)
-OPENAI_API_KEY = config_data['OPENAI_API_KEY']
 # check for required non standard packages, if not found, install then import them.
 required_packages = ["openai", "tiktoken"]
 for package in required_packages:
@@ -18,16 +16,6 @@ for package in required_packages:
         os.system(f"pip install {package}")
 import tiktoken
 from openai import OpenAI
-
-
-if not OPENAI_API_KEY:
-    print("you need to find out how to use the chatGPT API... \nCreate an account there, create an API key, and add that as an environment variable on your machine so you can run this code.")
-    exit()
-# Set up your OpenAI API key
-client = OpenAI(
-    # This is the default and can be omitted
-    api_key=OPENAI_API_KEY,
-)
 
 def send(
         text_data=None,
@@ -64,7 +52,6 @@ def send(
     for chunk in chunks:
         messages.append({"role": "user", "content": chunk})
         
-
     # Add the final "ALL PARTS SENT" message
     messages.append({"role": "user", "content": "ALL CHUNKS SENT!!!"})
     response = client.chat.completions.create(model=chat_model, messages=messages)
@@ -78,10 +65,31 @@ def read_file_content(file_path):
 
 # Use the function
 if __name__ == "__main__":
-    target_dir = input("What directory would you like to put the notes in?\nEnter full path: ")
+
+    with open('config.json', 'r') as file:
+        config_data = json.load(file)
+    OPENAI_API_KEY = config_data['OPENAI_API_KEY']
+
+    sys_prompt_path = config_data['sys_prompt']
+    sys_prompt = read_file_content(sys_prompt_path)
+
+    if not OPENAI_API_KEY:
+        print("you need to find out how to use the chatGPT API... \nCreate an account there, create an API key, and add that as an environment variable on your machine so you can run this code.")
+        exit()
+    if not sys_prompt:
+        print("you need to change the config file to contain the path to the desired system prompt...")
+        exit()
+
+    # Set up your OpenAI API key
+    client = OpenAI(
+        # This is the default and can be omitted
+        api_key=OPENAI_API_KEY,
+    )
+
+    target_dir = input("\n\nWhat directory would you like to put the notes in?\nRelative path is fine. enter nothing to save to default notes file\nPath: ")
     start = datetime.now()
     banner = '\n\n'+'*'*100+'\n\n'
-    if len(sys.argv) < 3:
+    if len(sys.argv) < 2:
         print("Usage: python3 gpt_notes.py [path_transcript_to_send_to_ChatGPT] [path_system_prompt]")
         exit()
     
@@ -90,11 +98,8 @@ if __name__ == "__main__":
     file_content = read_file_content(file_path)
     
     # specify name of lesson 
-    lesson = file_path.strip(".txt")
-
-    # get system prompt of gpt from text file in args
-    sys_prompt_path = sys.argv[2]
-    sys_prompt = read_file_content(sys_prompt_path)
+    pattern = r'[^\\\/]*(?=\.\w+$)'
+    lesson = re.search(pattern, file_path).group()
 
     # Send the file content to ChatGPT
     print(f"{banner}fetching notes from ChatGPT API{banner}")
@@ -103,17 +108,15 @@ if __name__ == "__main__":
     
     # first, let's try saving these notes to the directory of the user's choice
     # if that doesn't work or the user didn't select a dir, let's just save it to current dir.
-    try:
-        if target_dir != "":
-            with open(f"{target_dir}/{lesson}_notes.html", "w") as f:
-                for response in responses:
-                    f.write(response)
-            print(f"{banner}Notes written to {target_dir}{lesson}_notes.html{banner}")
-    except Exception as e:
-        print(e)
-        with open(f"./../notes/html/{lesson}_notes.html", "w") as f:
+    if target_dir:
+        with open(f"{target_dir}{lesson}_notes.html", "w") as f:
             for response in responses:
                 f.write(response)
+        print(f"{banner}Notes written to {target_dir}{lesson}_notes.html{banner}")
+    else:
+        with open(f"./../notes/html/{lesson}_notes.html", "w") as f:
+            f.write(response)
+        print(f"{banner}However, notes written to ./../notes/{lesson}_notes.html{banner}")
         print(f"{banner}However, notes written to ./../notes/html/{lesson}_notes.html{banner}")
     
     print(f"Runtime: {datetime.now() - start}")

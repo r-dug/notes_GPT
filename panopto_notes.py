@@ -139,6 +139,7 @@ if __name__ == "__main__":
         title = get_title(driver)
         print("Trying to get the title again...")
         time.sleep(2)
+        transcript_file = f"./../notes/transcripts/{title}.txt"
     captions(driver)
     time.sleep(1)
     transcript = find_transcript(driver, title)
