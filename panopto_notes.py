@@ -36,17 +36,13 @@ def SSO(driver):
     driver.get(href)
     time.sleep(3)
     
-    # driver.find_element(By.TAG_NAME,'body').send_keys('rcdoug03@louisville.edu')
     pyautogui.typewrite(f"{username}")
     driver.find_element(By.TAG_NAME,'body').send_keys(Keys.TAB)
     driver.find_element(By.TAG_NAME,'body').send_keys(Keys.TAB)
     driver.find_element(By.TAG_NAME,'body').send_keys(Keys.TAB)
-    # driver.find_element(By.TAG_NAME,'body').send_keys(Keys.TAB)
     pyautogui.press('enter')
     time.sleep(2)
     pyautogui.typewrite(f"{password}")
-    # driver.find_element(By.TAG_NAME,'body').send_keys(Keys.TAB)
-    # driver.find_element(By.TAG_NAME,'body').send_keys(Keys.TAB)
     time.sleep(1)
     pyautogui.press('enter')
     time.sleep(4)
@@ -98,9 +94,6 @@ def captions(driver):
 
 # Find the transcript on the Panopto content
 def find_transcript(driver, title):
-    # Navigate to panopto recording. might not need to...
-    # driver.get(url)
-
     # empty string to fill with transcript
     transcript = f"{title}\n"
     print("finding transcript elements and compiling list")
@@ -120,19 +113,13 @@ def find_transcript(driver, title):
             print(f"{e}\n\tfor {text}")
     return transcript
 
-# formatting
-def format_transcript(transcript):
-    translist = transcript.split(".")
-    transcript = ".\n".join(translist)
-    return transcript
-
-
 if __name__ == "__main__":
     start = datetime.now()
     url = sys.argv[1]
     ua = UserAgent()
     user_agent = ua.random
     options = Options()
+    # optional below. headless often runs faster.
     # options.add_argument('--headless')
     options.add_argument(f'user-agent={user_agent}')
     driver = webdriver.Chrome(options=options)
@@ -158,9 +145,9 @@ if __name__ == "__main__":
     transcript = format_transcript(transcript)
     print(transcript)
     print("writing text to file:")
-    with open(f"{title}.txt", 'w', encoding='utf-8') as f:
+    with open(f"./../notes/transcripts/{title}.txt", 'w', encoding='utf-8') as f:
         f.write(transcript)
         f.close()
-    print(f"Written to: {title}.txt")
+    print(f"Written to: ./../notes/transcripts/{title}.txt")
     print(f"RUNTIME: {datetime.now() - start}")
     time.sleep(10)

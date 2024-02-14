@@ -104,15 +104,16 @@ if __name__ == "__main__":
     # first, let's try saving these notes to the directory of the user's choice
     # if that doesn't work or the user didn't select a dir, let's just save it to current dir.
     try:
-        with open(f"{target_dir}{lesson}_notes.html", "w") as f:
-            for response in responses:
-                f.write(response)
-        print(f"{banner}Notes written to {target_dir}{lesson}_notes.html{banner}")
+        if target_dir != "":
+            with open(f"{target_dir}/{lesson}_notes.html", "w") as f:
+                for response in responses:
+                    f.write(response)
+            print(f"{banner}Notes written to {target_dir}{lesson}_notes.html{banner}")
     except Exception as e:
         print(e)
-        with open(f"./{lesson}_notes.html", "w") as f:
+        with open(f"./../notes/html/{lesson}_notes.html", "w") as f:
             for response in responses:
                 f.write(response)
-        print(f"{banner}However, notes written to ./{lesson}_notes.html{banner}")
+        print(f"{banner}However, notes written to ./../notes/html/{lesson}_notes.html{banner}")
     
     print(f"Runtime: {datetime.now() - start}")
