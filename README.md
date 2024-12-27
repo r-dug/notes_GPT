@@ -14,12 +14,9 @@ This repo contains a simple script that can be used to create simple HTML for no
 
 ## Using This Tool
 
-This tool is simple to use from the command line. One can simply use the commandline to execute the main script (gpt_notes.py) and enter any pertinent details as arguments. 
+This tool is simple to use from the command line. After cloningthis repo, one can simply use the commandline to execute the main script (gpt_notes.py) and enter any pertinent details as arguments. 
 
   > Usage: python3 gpt_notes.py <path_transcript_to_send_to_ChatGPT> <path_system_prompt>
-
-## Example:
-
 
 
 ## Improvements:
