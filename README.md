@@ -42,6 +42,8 @@ Honestly, I'll need to try this again to refresh my memory on the usage (oops). 
 
 ## Example output:
 
+**Below is an example output from this script. It is an Exam review for CSE130 at UofL (a class on C/C++). The HTML is rendered in MD, so it's a little different than it might appear in your browser. Howver, the actual HTML is in this dir.**
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
