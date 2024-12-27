@@ -17,7 +17,7 @@ This repo contains a simple script that can be used to create simple HTML for no
 This tool is simple to use from the command line. After cloning this repo and editing the very few config vars (be sure to rename the config file to "config.py" too), one can simply use the commandline to execute the script to scrape the  main script (gpt_notes.py) and enter any pertinent details as arguments. 
 ### Clone the Repository
 
-  If you are unsure of how to do this, or are new to github, instructions can be found (here)[https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository] from GitHub's documentation.
+  If you are unsure of how to do this, or are new to github, instructions can be found [here](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) from GitHub's documentation.
 
 ### Edit the Config
 
